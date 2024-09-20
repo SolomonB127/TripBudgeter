@@ -3,7 +3,6 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_one.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_three.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_two.dart';
-
 import 'home_page.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -15,19 +14,36 @@ class OnBoarding extends StatefulWidget {
 
 class _OnBoardingState extends State<OnBoarding> {
   int currentIndex = 0;
+  late PageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(initialPage: 0);
     return Scaffold(
       body: Stack(
         children: [
           PageView(
             controller: controller,
+            onPageChanged: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
             children: const <Widget>[
-              // on-boarding pages
               PageOne(),
               PageTwo(),
-              PageThree()
+              PageThree(),
             ],
           ),
           Positioned(
@@ -40,48 +56,68 @@ class _OnBoardingState extends State<OnBoarding> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const HomePage()));
+                      if (currentIndex == 0) {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                        );
+                      } else {
+                        setState(() {
+                          currentIndex--;
+                        });
+                        controller.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
                     },
                     child: Text(
                       currentIndex >= 1 ? "Previous" : "Skip Tour",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.inversePrimary),
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                      ),
                     ),
                   ),
                   SmoothPageIndicator(
-                      controller: controller,
-                      onDotClicked: (index) => {
-                            controller.jumpToPage(index),
-                            setState(() {
-                              currentIndex = index;
-                            })
-                          },
-                      count: 3,
-                      effect: const WormEffect(
-                        offset: 16.0,
-                        dotHeight: 16.0,
-                        dotWidth: 16.0,
-                        radius: 16,
-                      )),
+                    controller: controller,
+                    onDotClicked: (index) {
+                      controller.jumpToPage(index);
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                    count: 3,
+                    effect: const WormEffect(
+                      offset: 16.0,
+                      dotHeight: 16.0,
+                      dotWidth: 16.0,
+                      radius: 16,
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       if (currentIndex >= 2) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                        );
                       } else {
                         setState(() {
                           currentIndex++;
                         });
+                        controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
                       }
-                      controller.jumpToPage(currentIndex);
                     },
                     child: Text(
                       currentIndex >= 2 ? "Finish" : "Next",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.inversePrimary),
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                      ),
                     ),
                   ),
                 ],
@@ -92,9 +128,4 @@ class _OnBoardingState extends State<OnBoarding> {
       ),
     );
   }
-
-  // // Go to NextPage Method
-  // void Function()? goToNext(){
-  //   controller
-  // }
 }
