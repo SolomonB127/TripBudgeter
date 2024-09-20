@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:trip_budgeter/utils/routes.dart';
+import 'package:trip_budgeter/pages/onboarding.dart';
+import 'package:trip_budgeter/theme/theme.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -15,8 +17,10 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const MaterialApp(
-          onGenerateRoute: OnGenerateRoute.generateRoute
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: const OnBoarding(),
+          theme: lightmode,
         );
       }
     );
