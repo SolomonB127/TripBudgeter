@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193827673760",
+    "project_id": "tripbudgeter-9a09f",
+    "storage_bucket": "tripbudgeter-9a09f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193827673760:android:f53faf41238ccdb6329bc5",
+        "android_client_info": {
+          "package_name": "com.TripBudgeter.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMMtRJLW3hgpCOIyOnFCxEOfymYwSszJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
