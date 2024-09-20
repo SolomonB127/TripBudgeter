@@ -1,14 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:trip_budgeter/components/splash_screen.dart';
-// Import the generated file
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_budgeter/components/splash_screen.dart'; // Import SplashScreen
+import 'package:trip_budgeter/services/auth/auth_service.dart';
+// Import Onboarding page
+import 'package:trip_budgeter/theme/theme.dart'; // Import Theme file
+// Import the generated file for Firebase
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  ChangeNotifierProvider(
+    create: (context) => AuthService(), child: const MainApp()
   );
-  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -16,8 +22,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812), // Set the design size
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: lightmode, // Use the light theme
+          home: const SplashScreen(), // Display SplashScreen as the initial screen
+        );
+      },
     );
   }
 }
