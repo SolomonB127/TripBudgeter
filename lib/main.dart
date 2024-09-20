@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:trip_budgeter/pages/sign_in.dart';
 import 'package:trip_budgeter/pages/onboarding.dart';
 import 'package:trip_budgeter/theme/theme.dart';
 
