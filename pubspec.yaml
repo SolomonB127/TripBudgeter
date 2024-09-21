@@ -25,7 +25,3 @@ flutter:
   assets:
     - assets/images/           
     - assets/onBoardingImages/
-
-
-  uses-material-design: true
-  

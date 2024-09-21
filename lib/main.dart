@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_budgeter/components/splash_screen.dart'; // Import SplashScreen
 import 'package:trip_budgeter/services/auth/auth_service.dart';
-// Import Onboarding page
 import 'package:trip_budgeter/theme/theme.dart'; // Import Theme file
-// Import the generated file for Firebase
 import 'package:provider/provider.dart';
-import 'firebase_options.dart';
+import 'firebase_options.dart'; // Import Firebase configuration
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,9 +18,6 @@ Future<void> main() async {
     ),
   );
 }
-// void main() {
-//   runApp(const MainApp());
-// }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -37,8 +32,7 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightmode, // Use the light theme
-          home:
-              const SplashScreen(), // Display SplashScreen as the initial screen
+          home: const SplashScreen(), // Display SplashScreen as the initial screen
         );
       },
     );
