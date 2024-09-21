@@ -8,34 +8,29 @@ class AuthService extends ChangeNotifier {
   Future<UserCredential> signInWithEmailAndPassword(
       String email, String password) async {
     try {
-      UserCredential _userCredential = await _firebaseAuth
+      UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      
+
       // Ensure user profile is added or updated after sign-in
       await User_Profile.addUser(
-        _userCredential.user!.uid, 
-        _userCredential.user!.email!
-      );
-      
-      return _userCredential;
+          userCredential.user!.uid, userCredential.user!.email!);
+
+      return userCredential;
     } on FirebaseAuthException catch (e) {
-      throw Exception(e.code);
+      throw Exception(e.code); // Rethrow for handling in the SignIn widget
     }
   }
 
-  Future<UserCredential> signUp(
-      String email, String password) async {
+  Future<UserCredential> signUp(String email, String password) async {
     try {
-      UserCredential _userCredential = await _firebaseAuth
+      UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
-      
+
       // Add user profile after successful sign-up
       await User_Profile.addUser(
-        _userCredential.user!.uid, 
-        _userCredential.user!.email!
-      );
-      
-      return _userCredential;
+          userCredential.user!.uid, userCredential.user!.email!);
+
+      return userCredential;
     } on FirebaseAuthException catch (e) {
       throw Exception(e.code);
     }
