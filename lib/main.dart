@@ -12,10 +12,17 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  ChangeNotifierProvider(
-    create: (context) => AuthService(), child: const MainApp()
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AuthService(),
+      child: const MainApp(),
+    ),
   );
 }
+// void main() {
+//   runApp(const MainApp());
+// }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -30,7 +37,8 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightmode, // Use the light theme
-          home: const SplashScreen(), // Display SplashScreen as the initial screen
+          home:
+              const SplashScreen(), // Display SplashScreen as the initial screen
         );
       },
     );

@@ -12,7 +12,12 @@
           "package_name": "com.TripBudgeter.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "193827673760-uunhbu8f2cv4bu6q5u90k99ni9tj51j4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCMMtRJLW3hgpCOIyOnFCxEOfymYwSszJw"
@@ -20,7 +25,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193827673760-uunhbu8f2cv4bu6q5u90k99ni9tj51j4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193827673760:android:bf2a3f01e555a524329bc5",
+        "android_client_info": {
+          "package_name": "com.example.trip_budgeter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193827673760-uunhbu8f2cv4bu6q5u90k99ni9tj51j4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMMtRJLW3hgpCOIyOnFCxEOfymYwSszJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193827673760-uunhbu8f2cv4bu6q5u90k99ni9tj51j4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

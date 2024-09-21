@@ -54,9 +54,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCMMtRJLW3hgpCOIyOnFCxEOfymYwSszJw',
-    appId: '1:193827673760:android:f53faf41238ccdb6329bc5',
+    appId: '1:193827673760:android:bf2a3f01e555a524329bc5',
     messagingSenderId: '193827673760',
     projectId: 'tripbudgeter-9a09f',
     storageBucket: 'tripbudgeter-9a09f.appspot.com',
   );
+
 }
