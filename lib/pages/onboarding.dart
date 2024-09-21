@@ -3,7 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_one.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_three.dart';
 import 'package:trip_budgeter/pages/Onboarding/page_two.dart';
-import 'home_page.dart';
+import 'package:trip_budgeter/pages/sign_up.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -59,7 +59,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       if (currentIndex == 0) {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()),
+                              builder: (context) => const Signup()),
                         );
                       } else {
                         setState(() {
@@ -100,7 +100,8 @@ class _OnBoardingState extends State<OnBoarding> {
                       if (currentIndex >= 2) {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()),
+                              builder: (context) =>
+                                  const Signup()), // Navigate to SignIn page
                         );
                       } else {
                         setState(() {

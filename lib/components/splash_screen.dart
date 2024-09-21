@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trip_budgeter/main.dart';
+import 'package:trip_budgeter/pages/home.dart';
 import 'package:trip_budgeter/pages/onboarding.dart';
+
+import '../services/auth/auth_gate.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const OnBoarding()),
+        MaterialPageRoute(builder: (context) => const AuthGate()),
       );
     });
   }
@@ -28,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       // Background color of the splash screen
       body: Center(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset("assets/images/Logo.png"),
         ],

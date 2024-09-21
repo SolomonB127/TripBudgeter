@@ -33,7 +33,7 @@ class PageTwo extends StatelessWidget {
               const Text(
                   "Indulge in tranquility and comfort. Choose your perfect resting place with us, where serenity meets luxury. Select a haven that resonates with your soul. Your ultimate relaxation awaits.",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 11.0))
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0))
             ],
           ),
         ),
