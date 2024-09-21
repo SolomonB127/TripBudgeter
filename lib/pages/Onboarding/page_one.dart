@@ -29,7 +29,7 @@ class PageOne extends StatelessWidget {
               const Text(
                 "Take control of your travel expenses with our budget app! Effortlessly track spending, set limits, and maximize your trips without breaking the bank. Welcome to a smarter way to explore the world while staying on budget!",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 11.0),
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0),
               ),
             ],
           ),

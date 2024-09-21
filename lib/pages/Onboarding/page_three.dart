@@ -30,7 +30,7 @@ class PageThree extends StatelessWidget {
                   "Embrace the joy of travel! Explore new horizons, savor every moment, and create lasting memories. Your journey begins here. Enjoy the trip!",
                   textAlign: TextAlign.center,
                   style:
-                      TextStyle(fontWeight: FontWeight.w600, fontSize: 11.0)),
+                      TextStyle(fontWeight: FontWeight.w400, fontSize: 15.0)),
             ],
           ),
         ),

@@ -19,8 +19,7 @@ class AuthGate extends StatelessWidget {
               return const OnBoarding(); // User is not signed in
             }
           }
-          return const Center(
-              child: CircularProgressIndicator()); // Loading state
+          return const Center(child: CircularProgressIndicator()); // Loading state
         },
       ),
     );

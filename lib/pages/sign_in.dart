@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:trip_budgeter/components/splash_screen.dart';
 import 'package:trip_budgeter/constants/validators.dart';
 import 'package:trip_budgeter/pages/home.dart';
+import 'package:trip_budgeter/pages/sign_up.dart';
+import 'package:trip_budgeter/services/auth/auth_gate.dart';
 import 'package:trip_budgeter/services/auth/auth_service.dart';
 
-class Signin extends StatefulWidget {
-  const Signin({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  State<Signin> createState() => _SigninState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SigninState extends State<Signin> {
+class _SignInState extends State<SignIn> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   bool obscure = true;
@@ -39,17 +42,25 @@ class _SigninState extends State<Signin> {
         emailController.text,
         passwordController.text,
       );
+
+      // Navigate to the Splash page after successful sign-in
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                const SplashScreen()), // Replace with your splash page
+        (Route<dynamic> route) => false, // Remove all previous routes
+      );
     } catch (e) {
       // Show error in SnackBar
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(
-          e.toString(),
-          style: TextStyle(color: Colors.white),
-        )),
+        const SnackBar(
+          content: Text(
+            "Incorrect email or Password",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       );
-      print("Sign-in error: $e"); // Additional logging for debugging
     }
   }
 
@@ -113,7 +124,7 @@ class _SigninState extends State<Signin> {
                     onPressed: () {},
                     child: Text(
                       "Forgot Password?",
-                      style: TextStyle(color: Colors.black, fontSize: 15.sp),
+                      style: TextStyle(color: Colors.black, fontSize: 11.sp),
                     ),
                   ),
                 ],
@@ -152,7 +163,7 @@ class _SigninState extends State<Signin> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: Text("or", style: TextStyle(fontSize: 18.sp)),
+                    child: Text("or", style: TextStyle(fontSize: 12.sp)),
                   ),
                   const Expanded(
                     child: Divider(thickness: 1),
@@ -199,19 +210,28 @@ class _SigninState extends State<Signin> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Need an account?", style: TextStyle(fontSize: 20.sp)),
+                  Text("Need an account?", style: TextStyle(fontSize: 13.sp)),
                   TextButton(
                     onPressed: () {},
-                    child: Text(
-                      "Create one",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                        decoration: TextDecoration.underline,
-                        decorationStyle: TextDecorationStyle.solid,
-                        decorationColor:
-                            Theme.of(context).colorScheme.inversePrimary,
-                        decorationThickness: 2,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Signup()),
+                        );
+                      },
+                      child: Text(
+                        "Create one",
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          decoration: TextDecoration.underline,
+                          decorationStyle: TextDecorationStyle.solid,
+                          decorationColor:
+                              Theme.of(context).colorScheme.inversePrimary,
+                          decorationThickness: 2,
+                        ),
                       ),
                     ),
                   ),
