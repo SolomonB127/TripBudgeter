@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:trip_budgeter/pages/sign_in.dart';
+import 'package:trip_budgeter/pages/forgot_password.dart';
 import 'package:trip_budgeter/pages/onboarding.dart';
 import 'package:trip_budgeter/theme/theme.dart';
 
@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: const OnBoarding(),
+          home: const ForgotPassword(),
           theme: lightmode,
         );
       }

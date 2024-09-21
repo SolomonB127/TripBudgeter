@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trip_budgeter/constants/validators.dart';
 
-class Signin extends StatefulWidget {
-  const Signin({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Signin> createState() => _SigninState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SigninState extends State<Signin> {
+class _SignUpState extends State<SignUp> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   bool obscure = true;
@@ -31,28 +31,33 @@ class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffeaedf4),
-      body: SingleChildScrollView(
+        backgroundColor: const Color(0xffeaedf4),
+        body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(12.0).w,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            30.verticalSpace,
-            Image.asset("assets/images/signin.png"),
-            7.verticalSpace,
+          padding: const EdgeInsets.all(12.0).w,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            34.verticalSpace,
+            Image.asset("assets/images/sign up.png"),
+            10.verticalSpace,
             Text(
-              "Sign in",
+              "Sign Up",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.sp),
             ),
-            4.verticalSpace,
+            3.verticalSpace,
             Text(
-              "Please login to continue to account",
-              style: TextStyle(fontSize: 16.sp),
+              "Sign up to enjoy the full features of TripBudgeter",
+              style: TextStyle(fontSize: 14.sp),
             ),
             20.verticalSpace,
+            TextFormField(
+              validator: Validators.validateName,
+              decoration: InputDecoration(
+                hintText: "Full Name",
+                hintStyle: TextStyle(fontSize: 15.sp),
+              ),
+            ),
+            12.verticalSpace,
             TextFormField(
               validator: Validators.validateEmail,
               decoration: InputDecoration(
@@ -60,7 +65,7 @@ class _SigninState extends State<Signin> {
                 hintStyle: TextStyle(fontSize: 15.sp),
               ),
             ),
-            10.verticalSpace,
+            12.verticalSpace,
             TextFormField(
               controller: passwordController,
               obscureText: obscure,
@@ -83,21 +88,7 @@ class _SigninState extends State<Signin> {
                 ),
               ),
             ),
-            2.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                6.verticalSpace,
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: Colors.black, fontSize: 15.sp),
-                  ),
-                ),
-              ],
-            ),
-            11.verticalSpace,
+            20.verticalSpace,
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -116,7 +107,7 @@ class _SigninState extends State<Signin> {
                 ),
               ),
               child: const Text(
-                "Sign In",
+                "Sign Up",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -181,35 +172,8 @@ class _SigninState extends State<Signin> {
                 ),
               ),
             ),
-            10.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Need an account",
-                  style: TextStyle(fontSize: 20.sp),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Create one",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      decoration: TextDecoration.underline,
-                      decorationStyle: TextDecorationStyle.solid,
-                      decorationColor:
-                          Theme.of(context).colorScheme.inversePrimary,
-                      decorationThickness: 2,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            6.verticalSpace
-          ],
-        ),
-      ),
-    );
+            6.verticalSpace,
+          ]),
+        ));
   }
 }
