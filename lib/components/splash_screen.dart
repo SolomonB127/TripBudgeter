@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trip_budgeter/main.dart';
-import 'package:trip_budgeter/pages/home.dart';
 import 'package:trip_budgeter/pages/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {

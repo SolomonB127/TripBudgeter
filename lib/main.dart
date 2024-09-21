@@ -32,7 +32,8 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightmode, // Use the light theme
-          home: const SplashScreen(), // Display SplashScreen as the initial screen
+          home:
+              const SplashScreen(), // Display SplashScreen as the initial screen
         );
       },
     );
